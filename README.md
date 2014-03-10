@@ -2,13 +2,13 @@ http://wallet.peercointalk.org
 JavaScript Client-Side Peercoin Wallet Generator
 
 Now Peercoin addresses and their corresponding private key can be conveniently 
-generated in a web browser.
+Generated in a web browser.
 
 The wallet.peercointalk.org project provides an all-in-one HTML document with embedded
 JavaScript/Css/Images. The JavaScript is readable not minified and contains no
 XMLHttpRequest's (no AJAX). The benefit of this technique is you can load the 
 JavaScript locally and trust that the JavaScript did not change after being 
-loaded. 
+Loaded. 
 
 Here is a link to the peercointalk.org forum topic discussing this project:
 http://www.peercointalk.org/index.php?topic=1943.0
@@ -27,7 +27,7 @@ END USER NOTES:
  4) Mobile Safari only works with iPhone4 or newer devices.
     Older devices timeout while executing JavaScript.
  5) DO NOT use Opera Mini it renders JavaScript output server side, therefore
-    they might record the private key you generated.
+    They might record the private key you generated.
  6) Art Wallet does not work properly in IE8 due to CSS limitations.
 
 
