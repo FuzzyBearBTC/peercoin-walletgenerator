@@ -3,14 +3,14 @@
 ## JavaScript Client-Side Peercoin Wallet Generator
 >### [wallet.peercointalk.org](http://wallet.peercointalk.org)
 
-Peercoin addresses and their corresponding private key can now be conveniently 
+Peercoin addresses and their corresponding private key can now be conveniently
 generated in a web browser.
 
 The [wallet.peercointalk.org](http://wallet.peercointalk.org) project provides an
 all-in-one HTML document with embedded JavaScript/Css/Images. The JavaScript is
 readable (not minified) and contains no XMLHttpRequest's (no AJAX). The benefit
 of this technique is you can load the JavaScript locally and trust that the
-JavaScript did not change after being loaded. 
+JavaScript did not change after being loaded.
 
 Here is a link to the peercointalk.org forum topic discussing this project:
 http://www.peercointalk.org/index.php?topic=1943.0
@@ -47,19 +47,19 @@ peercoins for each commit you contribute to the project.
 
 ### END USER NOTES:
 
- 1. To print QRCode in IE8 you must enable the "Print Background Colors and 
+ 1. To print QRCode in IE8 you must enable the "Print Background Colors and
     Images" checkbox on the "Page Setup" screen.
-    
+
  2. For Bulk Wallet I recommended using Google Chrome, it's the fastest.
- 
+
  3. Requires IE8+, Firefox, Chrome or sufficient JavaScript support.
- 
+
  4. Mobile Safari only works with iPhone4 or newer devices.
     Older devices timeout while executing JavaScript.
-    
+
  5. DO NOT use Opera Mini it renders JavaScript output server side, therefore
     they might record the private key you generated.
-    
+
  6. Art Wallet does not work properly in IE8 due to CSS limitations.
 
 
@@ -68,11 +68,11 @@ peercoins for each commit you contribute to the project.
 
 Notice of Copyrights and Licenses:
 ---------------------------------------
-The wallet.peercointalk.org project, software and embedded resources are copyright peercointalk.org 
+The wallet.peercointalk.org project, software and embedded resources are copyright peercointalk.org
 The wallet.peercointalk.org name and logo are not part of the open source license.
 
-Portions of the all-in-one HTML document contain JavaScript codes that are the copyrights 
-of others. The individual copyrights are included throughout the document along with their 
+Portions of the all-in-one HTML document contain JavaScript codes that are the copyrights
+of others. The individual copyrights are included throughout the document along with their
 licenses. Included JavaScript libraries are separated with HTML script tags.
 
 Summary of JavaScript functions with a redistributable license:
@@ -95,12 +95,12 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 
-The above copyright notice and this permission notice shall be included in all copies 
+The above copyright notice and this permission notice shall be included in all copies
 or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
-INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
-PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
-HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION 
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

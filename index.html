@@ -8,10 +8,10 @@
 
 	Notice of Copyrights and Licenses:
 	***********************************
-	The wallet.peercontalk.org project, software and embedded resources are copyright wallet.peercontalk.org. 
+	The wallet.peercontalk.org project, software and embedded resources are copyright wallet.peercontalk.org.
 	The wallet.peercontalk.org name and logo are not part of the open source license.
 
-	Portions of the all-in-one HTML document contain JavaScript codes that are the copyrights of others. 
+	Portions of the all-in-one HTML document contain JavaScript codes that are the copyrights of others.
 	The individual copyrights are included throughout the document along with their licenses.
 	Included JavaScript libraries are separated with HTML script tags.
 
@@ -29,19 +29,19 @@
 	The wallet.peercontalk.org software is available under The MIT License (MIT)
 	Copyright (c) 2014 wallet.peercontalk.org
 
-	Permission is hereby granted, free of charge, to any person obtaining a copy of this software and 
-	associated documentation files (the "Software"), to deal in the Software without restriction, including 
-	without limitation the rights to use, copy, modify, merge, publish, distribute, sub-license, and/or 
-	sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject 
+	Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+	associated documentation files (the "Software"), to deal in the Software without restriction, including
+	without limitation the rights to use, copy, modify, merge, publish, distribute, sub-license, and/or
+	sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject
 	to the following conditions:
 
-	The above copyright notice and this permission notice shall be included in all copies or substantial 
+	The above copyright notice and this permission notice shall be included in all copies or substantial
 	portions of the Software.
 
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT 
-	LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-	IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-	WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+	LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+	IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+	WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 	SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 	GitHub Repository: https://github.com/FuzzyBearBTC/peercoin-walletgenerator
@@ -51,64 +51,64 @@
 
 	<script type="text/javascript">
 	// Array.prototype.map function is in the public domain.
-	// Production steps of ECMA-262, Edition 5, 15.4.4.19  
-	// Reference: http://es5.github.com/#x15.4.4.19  
+	// Production steps of ECMA-262, Edition 5, 15.4.4.19
+	// Reference: http://es5.github.com/#x15.4.4.19
 	if (!Array.prototype.map) {
 		Array.prototype.map = function (callback, thisArg) {
 			var T, A, k;
 			if (this == null) {
 				throw new TypeError(" this is null or not defined");
 			}
-			// 1. Let O be the result of calling ToObject passing the |this| value as the argument.  
+			// 1. Let O be the result of calling ToObject passing the |this| value as the argument.
 			var O = Object(this);
-			// 2. Let lenValue be the result of calling the Get internal method of O with the argument "length".  
-			// 3. Let len be ToUint32(lenValue).  
+			// 2. Let lenValue be the result of calling the Get internal method of O with the argument "length".
+			// 3. Let len be ToUint32(lenValue).
 			var len = O.length >>> 0;
-			// 4. If IsCallable(callback) is false, throw a TypeError exception.  
-			// See: http://es5.github.com/#x9.11  
+			// 4. If IsCallable(callback) is false, throw a TypeError exception.
+			// See: http://es5.github.com/#x9.11
 			if ({}.toString.call(callback) != "[object Function]") {
 				throw new TypeError(callback + " is not a function");
 			}
-			// 5. If thisArg was supplied, let T be thisArg; else let T be undefined.  
+			// 5. If thisArg was supplied, let T be thisArg; else let T be undefined.
 			if (thisArg) {
 				T = thisArg;
 			}
-			// 6. Let A be a new array created as if by the expression new Array(len) where Array is  
-			// the standard built-in constructor with that name and len is the value of len.  
+			// 6. Let A be a new array created as if by the expression new Array(len) where Array is
+			// the standard built-in constructor with that name and len is the value of len.
 			A = new Array(len);
-			// 7. Let k be 0  
+			// 7. Let k be 0
 			k = 0;
-			// 8. Repeat, while k < len  
+			// 8. Repeat, while k < len
 			while (k < len) {
 				var kValue, mappedValue;
-				// a. Let Pk be ToString(k).  
-				//   This is implicit for LHS operands of the in operator  
-				// b. Let kPresent be the result of calling the HasProperty internal method of O with argument Pk.  
-				//   This step can be combined with c  
-				// c. If kPresent is true, then  
+				// a. Let Pk be ToString(k).
+				//   This is implicit for LHS operands of the in operator
+				// b. Let kPresent be the result of calling the HasProperty internal method of O with argument Pk.
+				//   This step can be combined with c
+				// c. If kPresent is true, then
 				if (k in O) {
-					// i. Let kValue be the result of calling the Get internal method of O with argument Pk.  
+					// i. Let kValue be the result of calling the Get internal method of O with argument Pk.
 					kValue = O[k];
-					// ii. Let mappedValue be the result of calling the Call internal method of callback  
-					// with T as the value and argument list containing kValue, k, and O.  
+					// ii. Let mappedValue be the result of calling the Call internal method of callback
+					// with T as the value and argument list containing kValue, k, and O.
 					mappedValue = callback.call(T, kValue, k, O);
-					// iii. Call the DefineOwnProperty internal method of A with arguments  
-					// Pk, Property Descriptor {Value: mappedValue, Writable: true, Enumerable: true, Configurable: true},  
-					// and false.  
-					// In browsers that support Object.defineProperty, use the following:  
-					// Object.defineProperty(A, Pk, { value: mappedValue, writable: true, enumerable: true, configurable: true });  
-					// For best browser support, use the following:  
+					// iii. Call the DefineOwnProperty internal method of A with arguments
+					// Pk, Property Descriptor {Value: mappedValue, Writable: true, Enumerable: true, Configurable: true},
+					// and false.
+					// In browsers that support Object.defineProperty, use the following:
+					// Object.defineProperty(A, Pk, { value: mappedValue, writable: true, enumerable: true, configurable: true });
+					// For best browser support, use the following:
 					A[k] = mappedValue;
 				}
-				// d. Increase k by 1.  
+				// d. Increase k by 1.
 				k++;
 			}
-			// 9. return A  
+			// 9. return A
 			return A;
 		};
-	}  
+	}
 	</script>
-	
+
 	<script type="text/javascript">
 	/*!
 	* Crypto-JS v2.0.0
@@ -577,15 +577,15 @@
 			}
 		})();
 	</script>
-	
+
 	<script type="text/javascript">
 	/*!
 	* Random number generator with ArcFour PRNG
-	* 
+	*
 	* NOTE: For best results, put code like
 	* <body onclick='SecureRandom.seedTime();' onkeypress='SecureRandom.seedTime();'>
 	* in your main HTML document.
-	* 
+	*
 	* Copyright Tom Wu, bitaddress.org  BSD License.
 	* http://www-cs-students.stanford.edu/~tjw/jsbn/LICENSE
 	*/
@@ -717,7 +717,7 @@
 	* Basic Javascript Elliptic Curve implementation
 	* Ported loosely from BouncyCastle's Java EC code
 	* Only Fp curves implemented for now
-	* 
+	*
 	* Copyright Tom Wu, bitaddress.org  BSD License.
 	* http://www-cs-students.stanford.edu/~tjw/jsbn/LICENSE
 	*/
@@ -778,7 +778,7 @@
 		/**
 		* return a sqrt root - the routine verifies that the calculation
 		* returns the right value - if none exists it returns null.
-		* 
+		*
 		* Copyright (c) 2000 - 2011 The Legion Of The Bouncy Castle (http://www.bouncycastle.org)
 		* Ported to JavaScript by bitaddress.org
 		*/
@@ -1062,7 +1062,7 @@
 			var len = 32; // integerToBytes will zero pad if integer is less than 32 bytes. 32 bytes length is required by the Peercoin protocol.
 			var enc = ec.integerToBytes(x, len);
 
-			// when compressed prepend byte depending if y point is even or odd 
+			// when compressed prepend byte depending if y point is even or odd
 			if (compressed) {
 				if (y.isEven()) {
 					enc.unshift(0x02);
@@ -1361,7 +1361,7 @@
 	<script type="text/javascript">
 		/*!
 		* Basic JavaScript BN library - subset useful for RSA encryption. v1.3
-		* 
+		*
 		* Copyright (c) 2005  Tom Wu
 		* All Rights Reserved.
 		* BSD License
@@ -2643,7 +2643,7 @@
 	// Licensed under the MIT license:
 	//   http://www.opensource.org/licenses/mit-license.php
 	//
-	// The word "QR Code" is registered trademark of 
+	// The word "QR Code" is registered trademark of
 	// DENSO WAVE INCORPORATED
 	//   http://www.denso-wave.com/qrcode/faqpatent-e.html
 	//
@@ -2857,7 +2857,7 @@
 				var data = (this.errorCorrectLevel << 3) | maskPattern;
 				var bits = QRCode.Util.getBCHTypeInfo(data);
 
-				// vertical		
+				// vertical
 				for (var i = 0; i < 15; i++) {
 
 					var mod = (!test && ((bits >> i) & 1) == 1);
@@ -3540,7 +3540,7 @@
 	[2, 35, 17],
 	[2, 35, 13],
 
-		// 4		
+		// 4
 	[1, 100, 80],
 	[2, 50, 32],
 	[2, 50, 24],
@@ -3558,7 +3558,7 @@
 	[4, 43, 19],
 	[4, 43, 15],
 
-		// 7		
+		// 7
 	[2, 98, 78],
 	[4, 49, 31],
 	[2, 32, 14, 4, 33, 15],
@@ -3576,7 +3576,7 @@
 	[4, 36, 16, 4, 37, 17],
 	[4, 36, 12, 4, 37, 13],
 
-		// 10		
+		// 10
 	[2, 86, 68, 2, 87, 69],
 	[4, 69, 43, 1, 70, 44],
 	[6, 43, 19, 2, 44, 20],
@@ -3959,7 +3959,7 @@
 				* Parses a byte array containing a DER-encoded signature.
 				*
 				* This function will return an object of the form:
-				* 
+				*
 				* {
 				*   r: BigInteger,
 				*   s: BigInteger
@@ -4234,7 +4234,7 @@
 				this.pubPoint = ecPoint;
 			};
 
-			// Sipa Private Key Wallet Import Format 
+			// Sipa Private Key Wallet Import Format
 			ECKey.prototype.getPeercoinWalletImportFormat = function () {
 				var bytes = this.getPeercoinPrivateKeyByteArray();
 				bytes.unshift(ECKey.privateKeyPrefix); // prepend 0x80 byte
@@ -4245,12 +4245,12 @@
 				return privWif;
 			};
 
-			// Private Key Hex Format 
+			// Private Key Hex Format
 			ECKey.prototype.getPeercoinHexFormat = function () {
 				return Crypto.util.bytesToHex(this.getPeercoinPrivateKeyByteArray()).toString().toUpperCase();
 			};
 
-			// Private Key Base64 Format 
+			// Private Key Base64 Format
 			ECKey.prototype.getPeercoinBase64Format = function () {
 				return Crypto.util.bytesToBase64(this.getPeercoinPrivateKeyByteArray());
 			};
@@ -4258,7 +4258,7 @@
 			ECKey.prototype.getPeercoinPrivateKeyByteArray = function () {
 				// Get a copy of private key as a byte array
 				var bytes = this.priv.toByteArrayUnsigned();
-				// zero pad if private key is less than 32 bytes 
+				// zero pad if private key is less than 32 bytes
 				while (bytes.length < 32) bytes.unshift(0x00);
 				return bytes;
 			};
@@ -4503,14 +4503,14 @@
 		#culturemenu { text-align: center; padding: 0 20px; }
 		#culturemenu span { padding: 0 6px; }
 		#culturemenu .selected { text-decoration: none; color: #000000; }
-		
+
 		#paperarea { min-height: 120px; display: none; }
 		#paperarea .keyarea { border: 2px solid green; border-top: 0; }
 		#paperarea .keyarea.art { display: block; height: auto; border: 0; font-family: Ubuntu, Arial; padding: 0; margin: 0; }
 		#paperarea .artwallet .papersvg { width: 486px; height: 261px; border: 0; margin: 0; padding: 0; left: 0; }
 		#paperarea .artwallet .qrcode_public { top: 52px; left: 17px; z-index: 100; margin: 0; float: none; display: block; position: absolute; background-color: #FFFFFF; padding: 5px 5px 2px 5px; }
 		#paperarea .artwallet .qrcode_private { top: 104px; left: 360px; z-index: 100; margin: 0; float: none; display: block; position: absolute; background-color: #FFFFFF; padding: 5px 5px 2px 5px; }
-		#paperarea .artwallet .btcaddress  
+		#paperarea .artwallet .btcaddress
 		{
 		    position: absolute; top: 240px; left: 139px; z-index: 100; font-size: 10px; background-color: transparent;
 		    font-weight:bold; color: #000000; margin: 0;
@@ -4519,11 +4519,11 @@
 				-ms-transform-origin:top left;     -ms-transform:rotate(-90deg);
 				-o-transform-origin:top left;      -o-transform:rotate(-90deg);
 				transform-origin:top left;         transform:rotate(-90deg);
-		} 
-		#paperarea .artwallet .btcprivwif  
+		}
+		#paperarea .artwallet .btcprivwif
 		{
 		    position: absolute; top: 236px; left: 346px; z-index: 100; font-size: 7px; background-color: transparent;
-		    font-weight:bold; color: #000000; margin: 0;  
+		    font-weight:bold; color: #000000; margin: 0;
 				-webkit-transform-origin:top left; -webkit-transform:rotate(-90deg);
 				-moz-transform-origin:top left;    -moz-transform:rotate(-90deg);
 				-ms-transform-origin:top left;     -ms-transform:rotate(-90deg);
@@ -4558,35 +4558,35 @@
 		#vanitystep2area { border-top: 2px solid green; display: block; padding: 15px; }
 		#vanitystep2inputs { padding: 0 15px 10px 15px; }
 		#vanitycalc { margin-top: 5px; }
-		
+
 		.englishjson { text-align: center; padding: 40px 0 20px 0; }
 		.unittests { text-align: center; }
 		.unittests div { width: 894px; font-family: monospace; text-align: left; margin: auto; padding: 5px; border: 1px solid black; }
 		#testnet { font-family: Tahoma; display: none; background-color: Orange; color: #000000; border-radius: 5px; font-weight: bold; padding: 10px 0; margin: 0 auto 20px auto; }
-		
+
 		/* IE8 */
 		.qrcodetable { border-width: 0px; border-style: none; border-color: #0000ff; border-collapse: collapse; }
 		.qrcodetddark { border-width: 0px; border-style: none; border-color: #0000ff; border-collapse: collapse; padding: 0; margin: 0; width: 2px; height: 2px; background-color: #000000; }
 		.qrcodetdlight { border-width: 0px; border-style: none; border-color: #0000ff; border-collapse: collapse; padding: 0; margin: 0; width: 2px; height: 2px; background-color: #ffffff; }
-		
+
 		.menu { text-align: left; }
 		.menu .tab { background-color: #6C8C6C; border: 1px solid green; padding: 5px; margin: 0 2px 0 0; position: relative; top: 2px; z-index: 110; cursor: pointer; }
 		.menu .tab:hover { color: #FFF; }
 		.menu .tab.selected { background-color: #FFF; cursor: default; }
 		.menu .tab.selected:hover { color: #000; }
-		
-		@media screen 	
+
+		@media screen
 		{
 			.menu .tab { border-width: 2px; border-top-left-radius: 5px; border-top-right-radius: 5px; display: inline-block; }
 			.menu .tab.selected { border-bottom: 2px solid #FFF; }
 			#tagline { margin: 0 0 15px 0; font-style: italic; }
 			.pagebreak { height: 50px; }
 			.commands { border-bottom: 2px solid green;  padding: 10px 0; margin-bottom: 0; }
-			.commands span { padding: 0 10px; } 
-			.commands span.print { float: right; } 
+			.commands span { padding: 0 10px; }
+			.commands span.print { float: right; }
 			.commands span.right { float: right; }
 			.expandable { padding: 10px 15px; text-align: left; cursor: pointer; }
-			
+
 			#papercommands { padding: 10px 0; border: 2px solid green; }
 			#braincommands .row { text-align: left; }
 			#braincommands .row .label { width: 200px; display: inline-block; }
@@ -4598,9 +4598,9 @@
 			#detailcommands span { padding: 0 10px; }
 			#detailprivkey { width: 250px; }
 			.paper #commands { border-bottom: 2px solid green; padding: 0; margin-bottom: 0; }
-			#bulkstartindex, #paperlimit, #paperlimitperpage { width: 35px; } 
+			#bulkstartindex, #paperlimit, #paperlimitperpage { width: 35px; }
 			#bulklimit { width: 45px; }
-			
+
 			.footer { font-family: Arial, sans-serif; font-size: 90%; clear: both; max-width: 750px; padding: 10px 0; margin: 50px auto auto auto; }
 			.footer div span.item { padding: 10px; }
 			.footer .authorbtc { float: left; }
@@ -4641,7 +4641,7 @@
 			<div class="tab" id="vanitywallet" onclick="ninja.tabSwitch(this);">Vanity Wallet</div>
 			<div class="tab" id="detailwallet" onclick="ninja.tabSwitch(this);">Wallet Details</div>
 		</div>
-		
+
 		<div id="generate">
 			<span id="generatelabelonlinewarning"><strong>Security suggestion:</strong> It's recommended that you download this page and run it offline to prevent possible network spying/attacks.<br /><br /></span>
 			<span id="generatelabelpeercoinaddress">Generating Peercoin Address...</span><br />
@@ -4693,7 +4693,7 @@
 				</div>
 				<div id="paperkeyarea"></div>
 			</div>
-			
+
 			<div id="bulkarea" class="walletarea">
 				<div id="bulkcommands" class="commands">
 					<span><label id="bulklabelstartindex" for="bulkstartindex">Start index:</label> <input type="text" id="bulkstartindex" value="1" /></span>
@@ -4706,14 +4706,14 @@
 					<textarea rows="20" cols="88" id="bulktextarea"></textarea>
 				</div>
 				<div class="faqs">
-					<div id="bulkfaq1" class="bulkfaq"> 
+					<div id="bulkfaq1" class="bulkfaq">
 						<div id="bulkq1" class="bulkquestion" onclick="ninja.wallets.bulkwallet.openCloseFaq(1);">
 							<span id="bulklabelq1">Why should I use a Bulk Wallet to accept Peercoins on my website?</span>
 							<div id="bulke1" class="more"></div>
 						</div>
 						<div id="bulka1" class="bulkanswer">The traditional approach to accepting peercoins on your website requires that you install the official peercoin client daemon ("ppcoind"). Many website hosting packages don't support installing the peercoin daemon. Also, running the peercoin daemon on your web server means your private keys are hosted on the server and could get stolen if your web server is hacked. When using a Bulk Wallet you can upload only the peercoin addresses and not the private keys to your web server. Then you don't have to worry about your peercoin wallet being stolen if your web server is hacked. </div>
 					</div>
-					<div id="bulkfaq2" class="bulkfaq"> 
+					<div id="bulkfaq2" class="bulkfaq">
 						<div id="bulkq2" class="bulkquestion" onclick="ninja.wallets.bulkwallet.openCloseFaq(2);">
 							<span id="bulklabelq2">How do I use a Bulk Wallet to accept Peercoins on my website?</span>
 							<div id="bulke2" class="more"></div>
@@ -4730,7 +4730,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<div id="brainarea" class="walletarea">
 				<div id="braincommands" class="commands">
 					<div class="row">
@@ -4763,7 +4763,7 @@
 					</div>
 				</div>
 				<div class="faqs">
-					<div id="brainwalletgeneratewords" class="bulkfaq"> 
+					<div id="brainwalletgeneratewords" class="bulkfaq">
 						<div id="brainwalletgeneratewordstitle" class="bulkquestion" onclick="ninja.wallets.brainwallet.openCloseGenerateWords();">
 							<span id="bulklabelq1">Generate Random Words</span>
 							<div id="brainwalletgeneratewordscontente1" class="more"></div>
@@ -4782,10 +4782,10 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<div id="vanityarea" class="walletarea">
 				<div id="vanitystep1label" class="commands expandable" onclick="ninja.wallets.vanitywallet.openCloseStep(1);">
-					<span><label id="vanitylabelstep1">Step 1 - Generate your "Step 1 Key Pair"</label> <input type="button" id="vanitynewkeypair" 
+					<span><label id="vanitylabelstep1">Step 1 - Generate your "Step 1 Key Pair"</label> <input type="button" id="vanitynewkeypair"
 						value="Generate" onclick="ninja.wallets.vanitywallet.generateKeyPair();" /></span>
 					<div id="vanitystep1icon" class="more"></div>
 				</div>
@@ -4828,7 +4828,7 @@
 						<span class="output" id="vanityaddress"></span>
 						<br /><div class="notes" id="vanitylabelnotespeercoinaddress">The above is your new address that should include your required prefix.</div>
 					</div>
-					
+
 					<div>
 						<span class="label" id="vanitylabelpublickeyhex">Vanity Public Key (HEX):</span>
 						<span class="output pubkeyhex" id="vanitypublickeyhex"></span>
@@ -4843,7 +4843,7 @@
 				</div>
 			</div>
 
-			<div id="detailarea" class="walletarea">	
+			<div id="detailarea" class="walletarea">
 				<div id="detailcommands" class="commands">
 					<span><label id="detaillabelenterprivatekey" for="detailprivkey">Enter Private Key (any format)</label> <input type="text" id="detailprivkey" value="" onfocus="this.select();" onkeypress="if (event.keyCode == 13) ninja.wallets.detailwallet.viewDetails();" /></span>
 					<span><input type="button" id="detailview" value="View Details" onclick="ninja.wallets.detailwallet.viewDetails();" /></span>
@@ -5133,7 +5133,7 @@
 				return canvas;
 			},
 
-			// generate a QRCode and return it's representation as an Html table 
+			// generate a QRCode and return it's representation as an Html table
 			createTableHtml: function (text) {
 				var typeNumber = ninja.qrCode.getTypeNumber(text);
 				var qr = new QRCode(typeNumber, QRCode.ErrorCorrectLevel.H);
@@ -5156,7 +5156,7 @@
 			},
 
 			// show QRCodes with canvas OR table (IE8)
-			// parameter: keyValuePair 
+			// parameter: keyValuePair
 			// example: { "id1": "string1", "id2": "string2"}
 			//		"id1" is the id of a div element where you want a QRCode inserted.
 			//		"string1" is the string you want encoded into the QRCode.
@@ -5336,12 +5336,12 @@
 					"vanitylabelnote1": "[NOTA: esta casilla de entrada puede aceptar una clave pública o clave privada]",
 					"vanitylabelnote2": "[NOTA: esta casilla de entrada puede aceptar una clave pública o clave privada]",
 					"vanitylabelradioadd": "Añadir",
-					"vanitylabelradiomultiply": "Multiplicar", 
+					"vanitylabelradiomultiply": "Multiplicar",
 					"vanitycalc": "Calcular cartera personalizada",
 					"vanitylabelpeercoinaddress": "Dirección Peercoin personalizada:",
 					"vanitylabelnotespeercoinaddress": "Esta es tu nueva dirección, que debería tener el prefijo deseado.",
-					"vanitylabelpublickeyhex": "Clave pública personalizada (HEX):", 
-					"vanitylabelnotespublickeyhex": "Lo anterior es la clave pública en formato hexadecimal.", 
+					"vanitylabelpublickeyhex": "Clave pública personalizada (HEX):",
+					"vanitylabelnotespublickeyhex": "Lo anterior es la clave pública en formato hexadecimal.",
 					"vanitylabelprivatekey": "Clave privada personalizada (formato para importar):",
 					"vanitylabelnotesprivatekey": "Esto es la clave privada para introducir en tu cartera.",
 
@@ -5365,20 +5365,20 @@
 
 				"fr": {
 					// javascript alerts or messages
-					"testneteditionactivated": "BITION TESTNET ACTIVÉE",
+					"testneteditionactivated": "PEERCOIN TESTNET ACTIVÉ",
 					"paperlabelpeercoinaddress": "Adresse Peercoin:",
-					"paperlabelprivatekey": "Clé Privée (Format d'importation de porte-monnaie):",
+					"paperlabelprivatekey": "Clé privée (Format d'importation de porte-monnaie) :",
 					"bulkgeneratingaddresses": "Création de l'adresse... ",
-					"brainalertpassphrasetooshort": "Le mot de passe que vous avez entré est trop court.\n\nAttention: Choisir un mot de passe solide est important pour vous protéger des attaques bruteforce visant àrouver votre mot de passe et voler vos Peercoins.",
+					"brainalertpassphrasetooshort": "Le mot de passe que vous avez entré est trop court.\n\nAttention : Choisir un mot de passe solide est important pour vous protéger des attaques par force brute visant à trouver votre mot de passe et voler vos Peercoins.",
 					"brainalertpassphrasedoesnotmatch": "Le mot de passe ne correspond pas au mot de passe de vérification.",
-					"detailalertnotvalidprivatekey": "Le texte que vous avez entré n'est pas une Clé Privée valide",
-					"detailconfirmsha256": "Le texte que vous avez entré n'est pas une Clé Privée valide!\n\nVoulez-vous utiliser le texte comme un mot de passe et créer une Clé Privée artir d'un hash SHA256 de ce mot de passe?\n\nAttention: Choisir un mot de passe solide est important pour vous protéger des attaques bruteforce visant à trouver votre mot de passe et voler vos Peercoins.",
+					"detailalertnotvalidprivatekey": "Le texte que vous avez entré n'est pas une clé privée valide",
+					"detailconfirmsha256": "Le texte que vous avez entré n'est pas une clé privée valide !\n\nVoulez-vous utiliser le texte comme un mot de passe et créer une clé privée à partir d'un hash SHA256 de ce mot de passe?\n\nAttention: Choisir un mot de passe solide est important pour vous protéger des attaques par force brute visant à trouver votre mot de passe et voler vos Peercoins.",
 					"vanityinvalidinputcouldnotcombinekeys": "Entré non valide. Impossible de combiner les clés",
-					"vanityalertinvalidinputpublickeysmatch": "Entrée non valide. La Clé Publique des deux entrée est identique. Vous devez entrer deux clés différentes.",
-					"vanityalertinvalidinputcannotmultiple": "Entrée non valide. Il n'est pas possible de multiplier deux Clé Publique. Séctionner 'Ajouter' pour ajouter deux Clé Publique pour obtenir une adresse Peercoin.",
-					"vanityprivatekeyonlyavailable": "Seulement disponible si vos combinez deux Clé Privée",
-					"vanityalertinvalidinputprivatekeysmatch": "Entrée non valide. La Clé Privée des deux entrée est identique. Vous devez entrer deux clés différentes.",
-					
+					"vanityalertinvalidinputpublickeysmatch": "Entrée non valide. La clé publique des deux entrée est identique. Vous devez entrer deux clés différentes.",
+					"vanityalertinvalidinputcannotmultiple": "Entrée non valide. Il n'est pas possible de multiplier deux clé publique. Sectionner 'Ajouter' pour ajouter deux clé publique pour obtenir une adresse Peercoin.",
+					"vanityprivatekeyonlyavailable": "Seulement disponible si vos combinez deux clés privées",
+					"vanityalertinvalidinputprivatekeysmatch": "Entrée non valide. La clé privée des deux entrées est identique. Vous devez entrer deux clés différentes.",
+
 					// header and menu html
 					"tagline": "Générateur De Porte-Monnaie Peercoin Javascript Hors-Ligne",
 					"generatelabelpeercoinaddress": "Création de l'adresse Peercoin...",
@@ -5387,96 +5387,96 @@
 					"paperwallet": "Porte-Monnaie Papier",
 					"bulkwallet": "Porte-Monnaie En Vrac",
 					"brainwallet": "Porte-Monnaie Cerveau",
-					"vanitywallet": "Porte-Monnaie Vanitée",
+					"vanitywallet": "Porte-Monnaie Vanité",
 					"detailwallet": "Détails du Porte-Monnaie",
-					
+
 					// footer html
 					"footerlabeldonations": "Dons:",
 					//"footerlabeltranslatedby": "Traduction: 1Gy7NYSJNUYqUdXTBow5d7bCUEJkUFDFSq",
-					"footerlabelpgp": "Clé Publique PGP",
+					"footerlabelpgp": "Clé publique PGP",
 					"footerlabelversion": "Historique De Version Signé",
-					"footerlabelgithub": "Dépot GitHub",
+					"footerlabelgithub": "Dépôt GitHub",
 					"footerlabelcopyright1": "Copyright wallet.peercontalk.org.",
 					"footerlabelcopyright2": "Les droits d'auteurs JavaScript sont inclus dans le code source.",
 					"footerlabelnowarranty": "Aucune garantie.",
-					
+
 					// single wallet html
-					"newaddress": "G?rer Une Nouvelle Adresse",
+					"newaddress": "Générer Une Nouvelle Adresse",
 					"singleprint": "Imprimer",
 					"singlelabelpeercoinaddress": "Adresse Peercoin:",
-					"singlelabelprivatekey": "Clé Privée (Format d'importation de porte-monnaie):",
-					
+					"singlelabelprivatekey": "Clé privée (Format d'importation de porte-monnaie):",
+
 					// paper wallet html
-					"paperlabelhideart": "Retirer Le Style?",
+					"paperlabelhideart": "Retirer Le Style",
 					"paperlabeladdressesperpage": "Adresses par page:",
 					"paperlabeladdressestogenerate": "Nombre d'adresses à créer:",
-					"papergenerate": "G?rer",
+					"papergenerate": "Générer",
 					"paperprint": "Imprimer",
-					
+
 					// bulk wallet html
-					"bulklabelstartindex": "Commencer ?'index:",
-					"bulklabelrowstogenerate": "Colonnes ??rer:",
+					"bulklabelstartindex": "Commencer par l'index:",
+					"bulklabelrowstogenerate": "Colonnes générées:",
 					"bulkgenerate": "Générer",
 					"bulkprint": "Imprimer",
 					"bulklabelcsv": "Valeurs Séparées Par Des Virgules (CSV):",
-					"bulklabelformat": "Index,Adresse,Clé Privée(WIF)",
-					"bulklabelq1": "Pourquoi utiliserais-je un Porte-monnaie en vrac pour accepter les Peercoins sur mon site web?",
-					"bulka1": "L'approche traditionnelle pour accepter des Peercoins sur votre site web requi? l'installation du logiciel Peercoin officiel (\"ppcoind\"). Plusieurs h?rgeurs ne supportent pas l'installation du logiciel Peercoin. De plus, faire fonctionner le logiciel Peercoin sur votre serveur web signifie que vos Clé Privée sont h?rg? sur le serveur et pourraient donc ?e vol? si votre serveur web ?it compromis. En utilisant un Porte-monnaie en vrac, vous pouvez publiquer seulement les adresses Peercoin sur votre serveur et non les Clé Privée. Vous n'avez alors pas ?ous inqui?r du risque de vous faire voler votre porte-monnaie si votre serveur ?it compromis.",
-					"bulklabelq2": "Comment utiliser le Porte-monnaie en vrac pour utiliser le Peercoin sur mon site web?",
-					"bulklabela2li1": "Utilisez le Porte-monnaie en vrac pour pr??rer une large quantit?'adresses Peercoin (10,000+). Copiez collez les donn? s?r? par des virgules (CSV) dans un fichier texte s?ris?ans votre ordinateur. Sauvegardez ce fichier dans un endroit s?ris?",
-					"bulklabela2li2": "Importez les adresses Peercoin dans une base de donn?sur votre serveur web. (N'ajoutez pas le porte-monnaie ou les Clé Privée sur votre serveur web, sinon vous courrez le risque de vous faire voler si votre serveur est compromis. Ajoutez seulement les adresses Peercoin qui seront visibles ?os visiteurs.)",
-					"bulklabela2li3": "Ajoutez une option dans votre panier en ligne pour que vos clients puissent vous payer en Peercoin. Quand un client choisi de vous payer en Peercoin, vous pouvez afficher une des adresses de votre base de donn?comme \"adresse de paiment\" pour votre client et sauvegarder cette adresse avec sa commande.",
-					"bulklabela2li4": "Vous avez maintenant besoin d'?e avis?uand le paiement est re? Cherchez \"peercoin payment notification\" sur Google et inscrivez-vous ?n service de notification de paiement Peercoin. Il y a plusieurs services qui vous avertiront via des services Web, API, SMS, Email, etc. Une fois que vous avez re?la notification, qui devrait ?e programm?automatiquement, vous pouvez traiter la commande de votre client. Pour v?fier manuellement si un paiement est arriv?vous pouvez utiliser Block Explorer. Remplacez ADRESSE par l'adresse Peercoin que vous souhaitez v?fier. La confirmation de la transaction pourrait prendre de 10 ?0 minutes pour ?e confirm?<br />http://www.blockexplorer.com/address/ADRESSE<br /><br />Les transactions non confirm? peuvent ?e visualis? ici: http://blockchain.info/ <br />Vous devriez voir la transaction ?'int?eur de 30 secondes.",
-					"bulklabela2li5": "Les Peercoins vos s'accumuler de fa? s?ritaire dans la cha? de blocs. Utilisez le porte-monnaie original que vous avez g?r? l'?pe 1 pour les d?nser.",
-					
+					"bulklabelformat": "Index,Adresse,Clé privée(WIF)",
+					"bulklabelq1": "Pourquoi utiliserais-je un Porte-monnaie en vrac pour accepter les Peercoins sur mon site web ?",
+					"bulka1": "L'approche traditionnelle pour accepter des Peercoins sur votre site web requière l'installation du logiciel Peercoin officiel (\"ppcoind\"). Plusieurs hébergeurs ne supportent pas l'installation du logiciel Peercoin. De plus, faire fonctionner le logiciel Peercoin sur votre serveur web signifie que vos clé privée sont hébergées sur le serveur et pourraient donc être volées si votre serveur web est compromis. En utilisant un Porte-monnaie en vrac, vous pouvez publier seulement les adresses Peercoin sur votre serveur et non les clé privées. Vous n'avez alors pas vous inquiéter du risque de vous faire voler votre porte-monnaie si votre serveur est compromis.",
+					"bulklabelq2": "Comment utiliser le Porte-monnaie en vrac pour utiliser le Peercoin sur mon site web ?",
+					"bulklabela2li1": "Utilisez le Porte-monnaie en vrac pour protéger une large quantité d'adresses Peercoin (10,000+). Copiez collez les données séparées par des virgules (CSV) dans un fichier texte sur votre ordinateur. Sauvegardez ce fichier dans un endroit sécurisé",
+					"bulklabela2li2": "Importez les adresses Peercoin dans une base de donnée sur votre serveur web. (N'ajoutez pas le porte-monnaie ou les clé privées sur votre serveur web, sinon vous courrez le risque de vous faire voler si votre serveur est compromis. Ajoutez seulement les adresses Peercoin qui seront visibles vos visiteurs.)",
+					"bulklabela2li3": "Ajoutez une option dans votre panier en ligne pour que vos clients puissent vous payer en Peercoin. Quand un client choisi de vous payer en Peercoin, vous pouvez afficher une des adresses de votre base de donnée comme \"adresse de paiement\" pour votre client et sauvegarder cette adresse avec sa commande.",
+					"bulklabela2li4": "Vous avez maintenant besoin d'une notification quand le paiement est reçu? Cherchez \"peercoin payment notification\" sur Google et inscrivez-vous un service de notification de paiement Peercoin. Il y a plusieurs services qui vous avertiront via des services Web, API, SMS, Email, etc. Une fois que vous avez reçu la notification, qui devrait le programmer automatiquement, vous pouvez traiter la commande de votre client. Pour vérifier manuellement si un paiement est arrivé vous pouvez utiliser Block Explorer. Remplacez ADRESSE par l'adresse Peercoin que vous souhaitez vérifier. La confirmation de la transaction pourrait prendre de 10 à 60 minutes pour être confirmé<br />http://www.blockexplorer.com/address/ADRESSE<br /><br />Les transactions non confirmé peuvent être visualisé ici: http://blockchain.info/ <br />Vous devriez voir la transaction dans un délai de 30 secondes.",
+					"bulklabela2li5": "Les Peercoins vont s'accumuler de façon sécurisé dans la chaîne de blocs. Utilisez le porte-monnaie original que vous avez générer à l'étape pour les retirer.",
+
 					// brain wallet html
 					"brainlabelenterpassphrase": "Entrez votre mot de passe: ",
-					"brainlabelshow": "Afficher?",
+					"brainlabelshow": "Afficher",
 					"brainprint": "Imprimer",
 					"brainlabelconfirm": "Confirmer le mot de passe: ",
 					"brainview": "Visualiser",
 					"brainalgorithm": "Algorithme: SHA256(mot de passe)",
-					"brainlabelpeercoinaddress": "Adresse Peercoin:",
-					"brainlabelprivatekey": "Clé Privée(Format d'importation de porte-monnaie):",
-					
+					"brainlabelpeercoinaddress": "Adresse Peercoin :",
+					"brainlabelprivatekey": "Clé privée (Format d'importation de porte-monnaie) :",
+
 					// vanity wallet html
-					"vanitylabelstep1": "váape 1 - Générer votre \"éape 1 Paire De Clé",
+					"vanitylabelstep1": "váape 1 - Générer votre \"éape 1 Paire De clé",
 					"vanitynewkeypair": "Générer",
-					"vanitylabelstep1publickey": "Étape 1 Clé Publique:",
-					"vanitylabelstep1pubnotes": "Copiez celle-ci dans la case Votre Clé Publique du site de Vanity Pool.",
-					"vanitylabelstep1privatekey": "Step 1 Clé Privée",
-					"vanitylabelstep1privnotes": "Copiez la cette Clé Privée dans un fichier texte. Idéalement, sauvegardez la dans un fichier encrypté. Vous en aurez besoin pour récupérer la Clé Privée lors que Vanity Pool aura trouvé votre prífixe.",
+					"vanitylabelstep1publickey": "Étape 1 clé publique :",
+					"vanitylabelstep1pubnotes": "Copiez celle-ci dans la case votre clé publique du site de Vanity Pool.",
+					"vanitylabelstep1privatekey": "Step 1 clé privée",
+					"vanitylabelstep1privnotes": "Copiez la cette clé privée dans un fichier texte. Idéalement, sauvegardez la dans un fichier chiffré. Vous en aurez besoin pour récupérer la clé privée lors que Vanity Pool aura trouvé votre préfixe.",
 					"vanitylabelstep2calculateyourvanitywallet": "Étape 2 - Calculer votre Porte-monnaie Vanité",
-					"vanitylabelenteryourpart": "Entrez votre Clé Privée (générée Ã  l'étape 1 plus haut et précédemment sauvegardÃ©e):",
-					"vanitylabelenteryourpoolpart": "Entrez la Clé Privée(provenant de Vanity Pool):",
-					"vanitylabelnote1": "[NOTE: cette case peut accepter une Clé Publique ou un Clé Privée",
-					"vanitylabelnote2": "[NOTE: cette case peut accepter une Clé Publique ou un Clé Privée",
+					"vanitylabelenteryourpart": "Entrez votre clé privée (générée à l'étape 1 plus haut et précédemment sauvegardée):",
+					"vanitylabelenteryourpoolpart": "Entrez la clé privée(provenant de Vanity Pool) :",
+					"vanitylabelnote1": "[NOTE: cette case peut accepter une clé publique ou un clé privée",
+					"vanitylabelnote2": "[NOTE: cette case peut accepter une clé publique ou un clé privée",
 					"vanitylabelradioadd": "Ajouter",
 					"vanitylabelradiomultiply": "Multiplier",
 					"vanitycalc": "Calculer Le Porte-monnaie Vanité",
 					"vanitylabelpeercoinaddress": "Adresse Peercoin Vanité",
-					"vanitylabelnotespeercoinaddress": "Ci-haut est votre nouvelle adresse qui devrait inclure le prífix requis.",
-					"vanitylabelpublickeyhex": "Clé Publique Vanit?HEX):",
-					"vanitylabelnotespublickeyhex": "Celle-ci est la Clé Publique dans le format hexadécimal. ",
-					"vanitylabelprivatekey": "Clé Privée Vanité (WIF):",
-					"vanitylabelnotesprivatekey": "Celle-ci est la Clé Privée pour accéder à votre porte-monnaie. ",
-					
+					"vanitylabelnotespeercoinaddress": "Ci-dessus est votre nouvelle adresse qui devrait inclure le prífix requis.",
+					"vanitylabelpublickeyhex": "Clé publique Vanité (HEX):",
+					"vanitylabelnotespublickeyhex": "Celle-ci est la clé publique dans le format hexadécimal.",
+					"vanitylabelprivatekey": "Clé privée Vanité (WIF):",
+					"vanitylabelnotesprivatekey": "Celle-ci est la clé privée pour accéder à votre porte-monnaie.",
+
 					// detail wallet html
-					"detaillabelenterprivatekey": "Entrez la Clé Privée(quel que soit son format)",
+					"detaillabelenterprivatekey": "Entrez la clé privée(quel que soit son format)",
 					"detailview": "Voir les détails",
 					"detailprint": "Imprimer",
-					"detaillabelnote1": "Votre Clé Privée Bitcoin est un nombre secret que vous &ecirc;tes le seul à conna&icirc;tre. Il peut &ecirc;tre encodé sous la forme d'un nombre sous différents formats. Ci-bas, nous affichons l'adresse Peercoin et la Clé Publique qui corresponds à la Clé Privée ainsi que la Clé Privée dans les formats d'encodage les plus populaires (WIF, HEX, B64, MINI).",
-					"detaillabelnote2": "Peercoin v0.1+ conserve les Clé publiques dans un format compressée.  Le logiciel supporte maintenant aussi l'importation et l'exportation de Clé Privée avec importprivkey/dumpprivkey. Le format de la Clé Privée exportée est déterminé selon la version du porte-monnaie Peercoin.",
-					"detaillabelpeercoinaddress": "Adresse Peercoin:",
+					"detaillabelnote1": "Votre clé privée Peercoin est un nombre secret que vous êtes le seul à connaître. Il peut être encodé sous la forme d'un nombre sous différents formats. Ci-dessous, nous affichons l'adresse Peercoin et la clé publique qui corresponds à la clé privée ainsi que la clé privée dans les formats d'encodage les plus populaires (WIF, HEX, B64, MINI).",
+					"detaillabelnote2": "Peercoin v0.1+ conserve les clé publiques dans un format compressée. Le logiciel supporte maintenant aussi l'importation et l'exportation des clé privées avec importprivkey/dumpprivkey. Le format de la clé privée exportée est déterminé selon la version du porte-monnaie Peercoin.",
+					"detaillabelpeercoinaddress": "Adresse Peercoin :",
 					"detaillabelpeercoinaddresscomp": "Adresse Peercoin (compressée) :",
-					"detaillabelpublickey": "Clé Publique (130 caractères [0-9A-F]):",
-					"detaillabelpublickeycomp": "Clé Publique (compressée,  66 caractères [0-9A-F]):",
-					"detaillabelprivwif": "Clé Privée WIF (51 caractères base58, débute avec un a",
-					"detaillabelprivwifcomp": "CClé Privée WIF (compressée, 52 caractères base58, débute avec un a",
+					"detaillabelpublickey": "Clé publique (130 caractères [0-9A-F]) :",
+					"detaillabelpublickeycomp": "Clé publique (compressée,	66 caractères [0-9A-F]) :",
+					"detaillabelprivwif": "Clé privée WIF (51 caractères base58, débute par un a) :",
+					"detaillabelprivwifcomp": "Clé privée WIF (compressée, 52 caractères base58, débute par un a) :",
 					"detailcompwifprefix": "'K' ou 'L'",
-					"detaillabelprivhex": "Clé Privée Format Hexadecimal (64 caractères [0-9A-F]):",
-					"detaillabelprivb64": "Clé Privée Base64 (44 caractères):",
-					"detaillabelprivmini": "Clé Privée Format Mini (22, 26 ou 30 caractères, débute avec un 'S'):",
+					"detaillabelprivhex": "Clé privée Format Hexadecimal (64 caractères [0-9A-F]) :",
+					"detaillabelprivb64": "Clé privée Base64 (44 caractères) :",
+					"detaillabelprivmini": "Clé privée Format Mini (22, 26 ou 30 caractères, débute par un 'S') :",
 				}
 			}
 		};
@@ -5776,8 +5776,8 @@
 					bulkWallet.csv.push((bulkWallet.csvRowLimit - bulkWallet.csvRowsRemaining + bulkWallet.csvStartIndex)
 								+ ",\"" + key.getPeercoinAddress() + "\",\"" + key.toString("wif")
 					//+	"\",\"" + key.toString("wifcomp")    // uncomment these lines to add different private key formats to the CSV
-					//+ "\",\"" + key.getPeercoinHexFormat() 
-					//+ "\",\"" + key.toString("base64") 
+					//+ "\",\"" + key.getPeercoinHexFormat()
+					//+ "\",\"" + key.toString("base64")
 								+ "\"");
 
 					document.getElementById("bulktextarea").value = ninja.translator.get("bulkgeneratingaddresses") + bulkWallet.csvRowsRemaining;
@@ -5955,7 +5955,7 @@
 						privateKeyWif = ninja.translator.get("vanityprivatekeyonlyavailable");
 						var pubKeyHex = (ninja.publicKey.isPublicKeyHexFormat(input1KeyString)) ? input1KeyString : input2KeyString;
 						var ecKey = (ninja.privateKey.isPrivateKey(input1KeyString)) ? new Peercoin.ECKey(input1KeyString) : new Peercoin.ECKey(input2KeyString);
-						// add 
+						// add
 						if (document.getElementById("vanityradioadd").checked) {
 							var pubKeyCombined = ninja.publicKey.getByteArrayFromAdding(pubKeyHex, ecKey.getPubKeyHex());
 						}
@@ -6563,6 +6563,6 @@
 		// if users does not move mouse after random amount of time then generate the key anyway.
 		setTimeout(ninja.seeder.forceGenerate, ninja.seeder.seedLimit * 20);
 	</script>
-	
+
 </body>
 </html>
