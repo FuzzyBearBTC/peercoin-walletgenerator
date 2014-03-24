@@ -10,7 +10,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 //https://raw.github.com/bitcoinjs/bitcoinjs-lib/1a7fc9d063f864058809d06ef4542af40be3558f/src/bitcoin.js
 (function (exports) {
-	var Bitcoin = exports;
+	var Peercoin = exports;
 })(
-	'object' === typeof module ? module.exports : (window.Bitcoin = {})
+	'object' === typeof module ? module.exports : (window.Peercoin = {})
 );

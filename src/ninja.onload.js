@@ -17,8 +17,8 @@ if (ninja.getQueryString()["testnet"] == "true" || ninja.getQueryString()["testn
 	document.getElementById("testnet").style.display = "block";
 	document.getElementById("detailwifprefix").innerHTML = "'9'";
 	document.getElementById("detailcompwifprefix").innerHTML = "'c'";
-	Bitcoin.Address.networkVersion = 0x6F; // testnet
-	Bitcoin.ECKey.privateKeyPrefix = 0xEF; // testnet
+	Peercoin.Address.networkVersion = 0x6F; // testnet
+	Peercoin.ECKey.privateKeyPrefix = 0xEF; // testnet
 	ninja.testnetMode = true;
 }
 if (ninja.getQueryString()["showseedpool"] == "true" || ninja.getQueryString()["showseedpool"] == "1") {

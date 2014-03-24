@@ -3,33 +3,33 @@ var ninja = { wallets: {} };
 ninja.privateKey = {
 	isPrivateKey: function (key) {
 		return (
-					Bitcoin.ECKey.isWalletImportFormat(key) ||
-					Bitcoin.ECKey.isCompressedWalletImportFormat(key) ||
-					Bitcoin.ECKey.isHexFormat(key) ||
-					Bitcoin.ECKey.isBase64Format(key) ||
-					Bitcoin.ECKey.isMiniFormat(key)
+					Peercoin.ECKey.isWalletImportFormat(key) ||
+					Peercoin.ECKey.isCompressedWalletImportFormat(key) ||
+					Peercoin.ECKey.isHexFormat(key) ||
+					Peercoin.ECKey.isBase64Format(key) ||
+					Peercoin.ECKey.isMiniFormat(key)
 				);
 	},
 	getECKeyFromAdding: function (privKey1, privKey2) {
 		var n = EllipticCurve.getSECCurveByName("secp256k1").getN();
-		var ecKey1 = new Bitcoin.ECKey(privKey1);
-		var ecKey2 = new Bitcoin.ECKey(privKey2);
+		var ecKey1 = new Peercoin.ECKey(privKey1);
+		var ecKey2 = new Peercoin.ECKey(privKey2);
 		// if both keys are the same return null
-		if (ecKey1.getBitcoinHexFormat() == ecKey2.getBitcoinHexFormat()) return null;
+		if (ecKey1.getPeercoinHexFormat() == ecKey2.getPeercoinHexFormat()) return null;
 		if (ecKey1 == null || ecKey2 == null) return null;
-		var combinedPrivateKey = new Bitcoin.ECKey(ecKey1.priv.add(ecKey2.priv).mod(n));
+		var combinedPrivateKey = new Peercoin.ECKey(ecKey1.priv.add(ecKey2.priv).mod(n));
 		// compressed when both keys are compressed
 		if (ecKey1.compressed && ecKey2.compressed) combinedPrivateKey.setCompressed(true);
 		return combinedPrivateKey;
 	},
 	getECKeyFromMultiplying: function (privKey1, privKey2) {
 		var n = EllipticCurve.getSECCurveByName("secp256k1").getN();
-		var ecKey1 = new Bitcoin.ECKey(privKey1);
-		var ecKey2 = new Bitcoin.ECKey(privKey2);
+		var ecKey1 = new Peercoin.ECKey(privKey1);
+		var ecKey2 = new Peercoin.ECKey(privKey2);
 		// if both keys are the same return null
-		if (ecKey1.getBitcoinHexFormat() == ecKey2.getBitcoinHexFormat()) return null;
+		if (ecKey1.getPeercoinHexFormat() == ecKey2.getPeercoinHexFormat()) return null;
 		if (ecKey1 == null || ecKey2 == null) return null;
-		var combinedPrivateKey = new Bitcoin.ECKey(ecKey1.priv.multiply(ecKey2.priv).mod(n));
+		var combinedPrivateKey = new Peercoin.ECKey(ecKey1.priv.multiply(ecKey2.priv).mod(n));
 		// compressed when both keys are compressed
 		if (ecKey1.compressed && ecKey2.compressed) combinedPrivateKey.setCompressed(true);
 		return combinedPrivateKey;
@@ -42,7 +42,7 @@ ninja.privateKey = {
 	BIP38EncryptedKeyToByteArrayAsync: function (base58Encrypted, passphrase, callback) {
 		var hex;
 		try {
-			hex = Bitcoin.Base58.decode(base58Encrypted);
+			hex = Peercoin.Base58.decode(base58Encrypted);
 		} catch (e) {
 			callback(new Error(ninja.translator.get("detailalertnotvalidprivatekey")));
 			return;
@@ -61,7 +61,7 @@ ninja.privateKey = {
 
 		var expChecksum = hex.slice(-4);
 		hex = hex.slice(0, -4);
-		var checksum = Bitcoin.Util.dsha256(hex);
+		var checksum = Peercoin.Util.dsha256(hex);
 		if (checksum[0] != expChecksum[0] || checksum[1] != expChecksum[1] || checksum[2] != expChecksum[2] || checksum[3] != expChecksum[3]) {
 			callback(new Error(ninja.translator.get("detailalertnotvalidprivatekey")));
 			return;
@@ -101,15 +101,15 @@ ninja.privateKey = {
 		var AES_opts = { mode: new Crypto.mode.ECB(Crypto.pad.NoPadding), asBytes: true };
 
 		var verifyHashAndReturn = function () {
-			var tmpkey = new Bitcoin.ECKey(decrypted); // decrypted using closure
-			var base58AddrText = tmpkey.setCompressed(isCompPoint).getBitcoinAddress(); // isCompPoint using closure
-			checksum = Bitcoin.Util.dsha256(base58AddrText); // checksum using closure
+			var tmpkey = new Peercoin.ECKey(decrypted); // decrypted using closure
+			var base58AddrText = tmpkey.setCompressed(isCompPoint).getPeercoinAddress(); // isCompPoint using closure
+			checksum = Peercoin.Util.dsha256(base58AddrText); // checksum using closure
 
 			if (checksum[0] != hex[3] || checksum[1] != hex[4] || checksum[2] != hex[5] || checksum[3] != hex[6]) {
 				callback(new Error(ninja.translator.get("bip38alertincorrectpassphrase"))); // callback using closure
 				return;
 			}
-			callback(tmpkey.getBitcoinPrivateKeyByteArray()); // callback using closure
+			callback(tmpkey.getPeercoinPrivateKeyByteArray()); // callback using closure
 		};
 
 		if (!isECMult) {
@@ -130,9 +130,9 @@ ninja.privateKey = {
 					passfactor = prefactorA;
 				} else {
 					var prefactorB = prefactorA.concat(ownerentropy); // ownerentropy using closure
-					passfactor = Bitcoin.Util.dsha256(prefactorB);
+					passfactor = Peercoin.Util.dsha256(prefactorB);
 				}
-				var kp = new Bitcoin.ECKey(passfactor);
+				var kp = new Peercoin.ECKey(passfactor);
 				var passpoint = kp.setCompressed(true).getPub();
 
 				var encryptedpart2 = hex.slice(23, 23 + 16);
@@ -150,7 +150,7 @@ ninja.privateKey = {
 
 					var seedb = unencryptedpart1.slice(0, 0 + 16).concat(unencryptedpart2.slice(8, 8 + 8));
 
-					var factorb = Bitcoin.Util.dsha256(seedb);
+					var factorb = Peercoin.Util.dsha256(seedb);
 
 					var ps = EllipticCurve.getSECCurveByName("secp256k1");
 					var privateKey = BigInteger.fromByteArrayUnsigned(passfactor).multiply(BigInteger.fromByteArrayUnsigned(factorb)).remainder(ps.getN());
@@ -162,12 +162,12 @@ ninja.privateKey = {
 		}
 	},
 	BIP38PrivateKeyToEncryptedKeyAsync: function (base58Key, passphrase, compressed, callback) {
-		var privKey = new Bitcoin.ECKey(base58Key);
-		var privKeyBytes = privKey.getBitcoinPrivateKeyByteArray();
-		var address = privKey.setCompressed(compressed).getBitcoinAddress();
+		var privKey = new Peercoin.ECKey(base58Key);
+		var privKeyBytes = privKey.getPeercoinPrivateKeyByteArray();
+		var address = privKey.setCompressed(compressed).getPeercoinAddress();
 
 		// compute sha256(sha256(address)) and take first 4 bytes
-		var salt = Bitcoin.Util.dsha256(address).slice(0, 4);
+		var salt = Peercoin.Util.dsha256(address).slice(0, 4);
 
 		// derive key using scrypt
 		var AES_opts = { mode: new Crypto.mode.ECB(Crypto.pad.NoPadding), asBytes: true };
@@ -181,8 +181,8 @@ ninja.privateKey = {
 			var flagByte = compressed ? 0xe0 : 0xc0;
 			var encryptedKey = [0x01, 0x42, flagByte].concat(salt);
 			encryptedKey = encryptedKey.concat(Crypto.AES.encrypt(privKeyBytes, derivedBytes.slice(32), AES_opts));
-			encryptedKey = encryptedKey.concat(Bitcoin.Util.dsha256(encryptedKey).slice(0, 4));
-			callback(Bitcoin.Base58.encode(encryptedKey));
+			encryptedKey = encryptedKey.concat(Peercoin.Util.dsha256(encryptedKey).slice(0, 4));
+			callback(Peercoin.Base58.encode(encryptedKey));
 		});
 	},
 	BIP38GenerateIntermediatePointAsync: function (passphrase, lotNum, sequenceNum, callback) {
@@ -212,7 +212,7 @@ ninja.privateKey = {
 		// 4) Derive a key from the passphrase using scrypt
 		Crypto_scrypt(passphrase, ownerSalt, 16384, 8, 8, 32, function (prefactor) {
 			// Take SHA256(SHA256(prefactor + ownerentropy)) and call this passfactor
-			var passfactorBytes = noNumbers ? prefactor : Bitcoin.Util.dsha256(prefactor.concat(ownerEntropy));
+			var passfactorBytes = noNumbers ? prefactor : Peercoin.Util.dsha256(prefactor.concat(ownerEntropy));
 			var passfactor = BigInteger.fromByteArrayUnsigned(passfactorBytes);
 
 			// 5) Compute the elliptic curve point G * passfactor, and convert the result to compressed notation (33 bytes)
@@ -227,14 +227,14 @@ ninja.privateKey = {
 			var intermediate = magicBytes.concat(ownerEntropy).concat(passpoint);
 
 			// base58check encode
-			intermediate = intermediate.concat(Bitcoin.Util.dsha256(intermediate).slice(0, 4));
-			callback(Bitcoin.Base58.encode(intermediate));
+			intermediate = intermediate.concat(Peercoin.Util.dsha256(intermediate).slice(0, 4));
+			callback(Peercoin.Base58.encode(intermediate));
 		});
 	},
 	BIP38GenerateECAddressAsync: function (intermediate, compressed, callback) {
 		// decode IPS
-		var x = Bitcoin.Base58.decode(intermediate);
-		//if(x.slice(49, 4) !== Bitcoin.Util.dsha256(x.slice(0,49)).slice(0,4)) {
+		var x = Peercoin.Base58.decode(intermediate);
+		//if(x.slice(49, 4) !== Peercoin.Util.dsha256(x.slice(0,49)).slice(0,4)) {
 		//	callback({error: 'Invalid intermediate passphrase string'});
 		//}
 		var noNumbers = (x[7] === 0x53);
@@ -253,18 +253,18 @@ ninja.privateKey = {
 		rng.nextBytes(seedB);
 
 		// Take SHA256(SHA256(seedb)) to yield 32 bytes, call this factorb.
-		var factorB = Bitcoin.Util.dsha256(seedB);
+		var factorB = Peercoin.Util.dsha256(seedB);
 
-		// 3) ECMultiply passpoint by factorb. Use the resulting EC point as a public key and hash it into a Bitcoin
+		// 3) ECMultiply passpoint by factorb. Use the resulting EC point as a public key and hash it into a Peercoin
 		// address using either compressed or uncompressed public key methodology (specify which methodology is used
-		// inside flagbyte). This is the generated Bitcoin address, call it generatedaddress.
+		// inside flagbyte). This is the generated Peercoin address, call it generatedaddress.
 		var ec = EllipticCurve.getSECCurveByName("secp256k1").getCurve();
 		var generatedPoint = ec.decodePointHex(ninja.publicKey.getHexFromByteArray(passpoint));
 		var generatedBytes = generatedPoint.multiply(BigInteger.fromByteArrayUnsigned(factorB)).getEncoded(compressed);
-		var generatedAddress = (new Bitcoin.Address(Bitcoin.Util.sha256ripe160(generatedBytes))).toString();
+		var generatedAddress = (new Peercoin.Address(Peercoin.Util.sha256ripe160(generatedBytes))).toString();
 
 		// 4) Take the first four bytes of SHA256(SHA256(generatedaddress)) and call it addresshash.
-		var addressHash = Bitcoin.Util.dsha256(generatedAddress).slice(0, 4);
+		var addressHash = Peercoin.Util.dsha256(generatedAddress).slice(0, 4);
 
 		// 5) Now we will encrypt seedb. Derive a second key from passpoint using scrypt
 		Crypto_scrypt(passpoint, addressHash.concat(ownerEntropy), 1024, 1, 1, 64, function (derivedBytes) {
@@ -286,8 +286,8 @@ ninja.privateKey = {
 			var encryptedKey = [0x01, 0x43, flagByte].concat(addressHash).concat(ownerEntropy).concat(encryptedPart1.slice(0, 8)).concat(encryptedSeedB);
 
 			// base58check encode
-			encryptedKey = encryptedKey.concat(Bitcoin.Util.dsha256(encryptedKey).slice(0, 4));
-			callback(generatedAddress, Bitcoin.Base58.encode(encryptedKey));
+			encryptedKey = encryptedKey.concat(Peercoin.Util.dsha256(encryptedKey).slice(0, 4));
+			callback(generatedAddress, Peercoin.Base58.encode(encryptedKey));
 		});
 	}
 };
@@ -307,9 +307,9 @@ ninja.publicKey = {
 		key = key.toString();
 		return /^0[2-3][A-Fa-f0-9]{64}$/.test(key);
 	},
-	getBitcoinAddressFromByteArray: function (pubKeyByteArray) {
-		var pubKeyHash = Bitcoin.Util.sha256ripe160(pubKeyByteArray);
-		var addr = new Bitcoin.Address(pubKeyHash);
+	getPeercoinAddressFromByteArray: function (pubKeyByteArray) {
+		var pubKeyHash = Peercoin.Util.sha256ripe160(pubKeyByteArray);
+		var addr = new Peercoin.Address(pubKeyHash);
 		return addr.toString();
 	},
 	getHexFromByteArray: function (pubKeyByteArray) {
