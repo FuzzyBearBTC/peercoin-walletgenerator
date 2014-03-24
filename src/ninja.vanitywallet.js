@@ -54,7 +54,7 @@ ninja.wallets.vanitywallet = {
 				privateKeyWif = ninja.translator.get("vanityprivatekeyonlyavailable");
 				var pubKeyHex = (ninja.publicKey.isPublicKeyHexFormat(input1KeyString)) ? input1KeyString : input2KeyString;
 				var ecKey = (ninja.privateKey.isPrivateKey(input1KeyString)) ? new Bitcoin.ECKey(input1KeyString) : new Bitcoin.ECKey(input2KeyString);
-				// add 
+				// add
 				if (document.getElementById("vanityradioadd").checked) {
 					var pubKeyCombined = ninja.publicKey.getByteArrayFromAdding(pubKeyHex, ecKey.getPubKeyHex());
 				}
