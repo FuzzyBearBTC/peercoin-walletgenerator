@@ -136,6 +136,7 @@
 		</div>
 
 		<div id="generate">
+			<span id="generatelabelonlinewarning"><strong>Security suggestion:</strong> It's recommended that you download this page and run it offline to prevent possible network spying/attacks.<br /><br /></span>
 			<span id="generatelabelpeercoinaddress">Generating Peercoin Address...</span><br />
 			<span id="generatelabelmovemouse">MOVE your mouse around to add some extra randomness... </span><span id="mousemovelimit"></span><br />
 			<span id="generatelabelkeypress">OR type some random characters into this textbox</span> <input type="text" id="generatekeyinput" onkeypress="ninja.seeder.seedKeyPress(event);" /><br />
@@ -251,7 +252,7 @@
 						<span class="label" id="brainlabelconfirm"><label for="brainpassphraseconfirm">Confirm Passphrase: </label></span>
 						<input tabindex="2" type="password" id="brainpassphraseconfirm" value="" onfocus="this.select();" onkeypress="if (event.keyCode == 13) ninja.wallets.brainwallet.view();" />
 						<span><input tabindex="3" type="button" id="brainview" value="View" onclick="ninja.wallets.brainwallet.view();" /></span>
-						<span id="brainalgorithm" class="notes right">Algorithm: SHA256(passphrase)</span>
+						<span id="brainalgorithm" class="notes right"><a href="http://www.peercointalk.org/index.php?topic=2004" target="_blank">Before Creating a Brain Wallet please read this thread</a></span>
 					</div>
 					<div class="row extra"><span id="brainwarning"></span></div>
 				</div>
@@ -268,6 +269,27 @@
 						<div class="privwif">
 							<span class="label" id="brainlabelprivatekey">Private Key (Wallet Import Format):</span>
 							<span class="output" id="brainbtcprivwif"></span>
+						</div>
+					</div>
+				</div>
+				<div class="faqs">
+					<div id="brainwalletgeneratewords" class="faq">
+						<div id="brainwalletgeneratewordstitle" class="question" onclick="ninja.wallets.brainwallet.openCloseGenerateWords();">
+							<span id="brainlabelq1">Generate Random Words</span>
+							<div id="brainwalletgeneratewordscontente1" class="more"></div>
+						</div>
+						<div id="brainwalletgeneratewordscontent" class="answer">
+							<label for="braingeneratewordcount">Number of words: </label>
+							<input type="number" id="braingeneratewordcount" min="6" max="600" value="12">
+							<button onclick="ninja.wallets.brainwallet.getRandomWords();">Generate Words</button>
+							<br />
+							<span id="braingeneratedwordlist">NOT GENERATED YET - CLICK THE GENERATE BUTTON!</span>
+							<br />
+							<p><strong>Before using a brain wallet, please ensure you understand the security and risks involved <a href="http://www.peercointalk.org/index.php?topic=2004">(Read more)</a>.</strong></p>
+							<p>12 Randomly selected words will be generated for you to use as a passphrase for your brain wallet. The <a href="https://raw.github.com/spesmilo/electrum/master/lib/mnemonic.py">word list</a> used here is the same as used by the <a href="https://github.com/spesmilo/electrum">Electrum Wallet</a> program, which is open source and you can take a look at.</p>
+							<p>Copy and paste the generated words into the passphrase boxes above to generate your private key and public address.</p>
+							<p>The generated words will always be lowercase and be separated by a space. Double check you don't have an accidental extra space at the end as this could cause confusion later on.</p>
+							<p>Make sure you write this down and keep it safe and offline; if you lose these words, you could lose all of your peercoins.</p>
 						</div>
 					</div>
 				</div>

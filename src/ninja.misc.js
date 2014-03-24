@@ -6,6 +6,9 @@ ninja.seeder = {
 	// number of mouse movements to wait for
 	seedLimit: (function () {
 		var num = Crypto.util.randomBytes(12)[11];
+		if(num < 96) {
+			num = num*2;
+		}
 		return 200 + Math.floor(num);
 	})(),
 
