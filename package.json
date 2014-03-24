@@ -1,7 +1,7 @@
 {
-  "name": "bitaddress.org",
+  "name": "wallet.peercointalk.org",
   "version": "2.8.1",
-  "description": "Open Source JavaScript Client-Side Bitcoin Wallet Generator",
+  "description": "Open Source JavaScript Client-Side Peercoin Wallet Generator",
   "main": "Gruntfile.js",
   "dependencies": {
     "grunt": "~0.4.1",
@@ -13,16 +13,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/pointbiz/bitaddress.org.git"
+    "url": "git://github.com/FuzzyBearBTC/peercoin-walletgenerator"
   },
   "keywords": [
-    "bitcoin address wallet generator"
+    "peercoin address wallet generator"
   ],
-  "author": "pointbiz",
+  "author": "FuzzyBearBTC",
   "license": "MIT",
   "readmeFilename": "README",
   "gitHead": "d77aaf687fca1f0e28388b0a8de5eb3d89d4fad3",
   "bugs": {
-    "url": "https://github.com/pointbiz/bitaddress.org/issues"
+    "url": "https://github.com/FuzzyBearBTC/peercoin-walletgenerator/issues"
   }
 }
