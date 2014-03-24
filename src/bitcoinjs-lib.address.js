@@ -7,7 +7,7 @@ Peercoin.Address = function (bytes) {
 	this.version = Peercoin.Address.networkVersion;
 };
 
-Peercoin.Address.networkVersion = 0x00; // mainnet
+Peercoin.Address.networkVersion = 0x37; // mainnet
 
 /**
 * Serialize this object as a standard Peercoin address.
