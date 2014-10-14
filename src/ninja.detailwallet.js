@@ -46,36 +46,36 @@ ninja.wallets.detailwallet = {
 			// show Private Key BIP38 Format
 			document.getElementById("detailprivbip38").innerHTML = key;
 			document.getElementById("detailbip38").style.display = "block";
-			ninja.privateKey.BIP38EncryptedKeyToByteArrayAsync(key, passphrase, function (btcKeyOrError) {
+			ninja.privateKey.BIP38EncryptedKeyToByteArrayAsync(key, passphrase, function (ppcKeyOrError) {
 				document.getElementById("busyblock").className = "";
-				if (btcKeyOrError.message) {
-					alert(btcKeyOrError.message);
+				if (ppcKeyOrError.message) {
+					alert(ppcKeyOrError.message);
 					ninja.wallets.detailwallet.clear();
 				} else {
-					ninja.wallets.detailwallet.populateKeyDetails(new Bitcoin.ECKey(btcKeyOrError));
+					ninja.wallets.detailwallet.populateKeyDetails(new Peercoin.ECKey(ppcKeyOrError));
 				}
 			});
 		}
 		else {
-			if (Bitcoin.ECKey.isMiniFormat(key)) {
+			if (Peercoin.ECKey.isMiniFormat(key)) {
 				// show Private Key Mini Format
 				document.getElementById("detailprivmini").innerHTML = key;
 				document.getElementById("detailmini").style.display = "block";
 			}
-			else if (Bitcoin.ECKey.isBase6Format(key)) {
+			else if (Peercoin.ECKey.isBase6Format(key)) {
 				// show Private Key Base6 Format
 				document.getElementById("detailprivb6").innerHTML = key;
 				document.getElementById("detailb6").style.display = "block";
 			}
-			var btcKey = new Bitcoin.ECKey(key);
-			if (btcKey.priv == null) {
+			var ppcKey = new Peercoin.ECKey(key);
+			if (ppcKey.priv == null) {
 				// enforce a minimum passphrase length
 				if (key.length >= ninja.wallets.brainwallet.minPassphraseLength) {
 					// Deterministic Wallet confirm box to ask if user wants to SHA256 the input to get a private key
 					var usePassphrase = confirm(ninja.translator.get("detailconfirmsha256"));
 					if (usePassphrase) {
 						var bytes = Crypto.SHA256(key, { asBytes: true });
-						var btcKey = new Bitcoin.ECKey(bytes);
+						var ppcKey = new Peercoin.ECKey(bytes);
 					}
 					else {
 						ninja.wallets.detailwallet.clear();
@@ -86,30 +86,30 @@ ninja.wallets.detailwallet = {
 					ninja.wallets.detailwallet.clear();
 				}
 			}
-			ninja.wallets.detailwallet.populateKeyDetails(btcKey);
+			ninja.wallets.detailwallet.populateKeyDetails(ppcKey);
 		}
 	},
 
-	populateKeyDetails: function (btcKey) {
-		if (btcKey.priv != null) {
-			btcKey.setCompressed(false);
-			document.getElementById("detailprivhex").innerHTML = btcKey.toString().toUpperCase();
-			document.getElementById("detailprivb64").innerHTML = btcKey.toString("base64");
-			var bitcoinAddress = btcKey.getBitcoinAddress();
-			var wif = btcKey.getBitcoinWalletImportFormat();
-			document.getElementById("detailpubkey").innerHTML = btcKey.getPubKeyHex();
-			document.getElementById("detailaddress").innerHTML = bitcoinAddress;
+	populateKeyDetails: function (ppcKey) {
+		if (ppcKey.priv != null) {
+			ppcKey.setCompressed(false);
+			document.getElementById("detailprivhex").innerHTML = ppcKey.toString().toUpperCase();
+			document.getElementById("detailprivb64").innerHTML = ppcKey.toString("base64");
+			var peercoinAddress = ppcKey.getPeercoinAddress();
+			var wif = ppcKey.getPeercoinWalletImportFormat();
+			document.getElementById("detailpubkey").innerHTML = ppcKey.getPubKeyHex();
+			document.getElementById("detailaddress").innerHTML = peercoinAddress;
 			document.getElementById("detailprivwif").innerHTML = wif;
-			btcKey.setCompressed(true);
-			var bitcoinAddressComp = btcKey.getBitcoinAddress();
-			var wifComp = btcKey.getBitcoinWalletImportFormat();
-			document.getElementById("detailpubkeycomp").innerHTML = btcKey.getPubKeyHex();
-			document.getElementById("detailaddresscomp").innerHTML = bitcoinAddressComp;
+			ppcKey.setCompressed(true);
+			var peercoinAddressComp = ppcKey.getPeercoinAddress();
+			var wifComp = ppcKey.getPeercoinWalletImportFormat();
+			document.getElementById("detailpubkeycomp").innerHTML = ppcKey.getPubKeyHex();
+			document.getElementById("detailaddresscomp").innerHTML = peercoinAddressComp;
 			document.getElementById("detailprivwifcomp").innerHTML = wifComp;
 
 			ninja.qrCode.showQrCode({
-				"detailqrcodepublic": bitcoinAddress,
-				"detailqrcodepubliccomp": bitcoinAddressComp,
+				"detailqrcodepublic": peercoinAddress,
+				"detailqrcodepubliccomp": peercoinAddressComp,
 				"detailqrcodeprivate": wif,
 				"detailqrcodeprivatecomp": wifComp
 			}, 4);

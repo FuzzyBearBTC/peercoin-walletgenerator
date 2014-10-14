@@ -13,10 +13,10 @@ ninja.wallets.bulkwallet = {
 	},
 
 	// use this function to bulk generate addresses
-	// rowLimit: number of Bitcoin Addresses to generate
+	// rowLimit: number of Peercoin Addresses to generate
 	// startIndex: add this number to the row index for output purposes
 	// returns:
-	// index,bitcoinAddress,privateKeyWif
+	// index,peercoinAddress,privateKeyWif
 	buildCSV: function (rowLimit, startIndex, compressedAddrs) {
 		var bulkWallet = ninja.wallets.bulkwallet;
 		document.getElementById("bulktextarea").value = ninja.translator.get("bulkgeneratingaddresses") + rowLimit;
@@ -37,13 +37,13 @@ ninja.wallets.bulkwallet = {
 		var bulkWallet = ninja.wallets.bulkwallet;
 		if (bulkWallet.csvRowsRemaining > 0) {
 			bulkWallet.csvRowsRemaining--;
-			var key = new Bitcoin.ECKey(false);
+			var key = new Peercoin.ECKey(false);
 			key.setCompressed(bulkWallet.compressedAddrs);
 
 			bulkWallet.csv.push((bulkWallet.csvRowLimit - bulkWallet.csvRowsRemaining + bulkWallet.csvStartIndex)
-								+ ",\"" + key.getBitcoinAddress() + "\",\"" + key.toString("wif")
+								+ ",\"" + key.getPeercoinAddress() + "\",\"" + key.toString("wif")
 			//+	"\",\"" + key.toString("wifcomp")    // uncomment these lines to add different private key formats to the CSV
-			//+ "\",\"" + key.getBitcoinHexFormat() 
+			//+ "\",\"" + key.getPeercoinHexFormat() 
 			//+ "\",\"" + key.toString("base64") 
 								+ "\"");
 

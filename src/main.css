@@ -25,7 +25,7 @@ body, html { height: 99%; }
 .faq { border: 0; border-top: 2px solid #009900; }
 
 #wallets { clear: both; }
-#btcaddress, #btcprivwif, #detailaddress, #detailaddresscomp, #detailprivwif, #detailprivwifcomp { font-family: monospace; font-size: 1.25em; }
+#ppcaddress, #ppcprivwif, #detailaddress, #detailaddresscomp, #detailprivwif, #detailprivwifcomp { font-family: monospace; font-size: 1.25em; }
 #seedpoolarea { display: none; }
 #seedpooldisplay {  font-family: monospace; font-size: 1em; width: 640px; padding: 15px 5px; word-wrap: break-word; }
 .seedpoint { width: 6px; height: 6px; display: block; border-radius: 3px; background-color: #009900; position: absolute; z-index: 10; }
@@ -56,7 +56,7 @@ body, html { height: 99%; }
 		                                padding: 5px 5px 2px 5px; } 
 #paperarea .artwallet .qrcode_private { top: 104px; left: 360px; z-index: 100; margin: 0; float: none; display: block; position: absolute; background-color: #FFFFFF; 
 		                                padding: 5px 5px 2px 5px; }
-#paperarea .artwallet .btcaddress  
+#paperarea .artwallet .ppcaddress  
 {
 	position: absolute; top: 240px; left: 139px; z-index: 100; font-size: 10px; background-color: transparent;
 	font-weight:bold; color: #000000; margin: 0;
@@ -66,7 +66,7 @@ body, html { height: 99%; }
 		-o-transform-origin:top left;      -o-transform:rotate(-90deg);
 		transform-origin:top left;         transform:rotate(-90deg);
 } 
-#paperarea .artwallet .btcprivwif  
+#paperarea .artwallet .ppcprivwif  
 {
 	position: absolute; top: 236px; left: 346px; z-index: 100; font-size: 7px; background-color: transparent;
 	font-weight:bold; color: #000000; margin: 0;  
@@ -76,7 +76,7 @@ body, html { height: 99%; }
 		-o-transform-origin:top left;      -o-transform:rotate(-90deg);
 		transform-origin:top left;         transform:rotate(-90deg);
 }
-#paperarea .artwallet .btcencryptedkey
+#paperarea .artwallet .ppcencryptedkey
 {
 	position: absolute; top: 174px; left: 332px; z-index: 100; font-size: 8px; background-color: transparent;
 	font-weight:bold; color: #000000; margin: 0;  
@@ -200,9 +200,9 @@ body, html { height: 99%; }
 			
 	.footer { font-size: 90%; clear: both; width: 750px; padding: 10px 0 10px 0; margin: 50px auto auto auto; }
 	.footer div span.item { padding: 10px; }
-	.footer .authorbtc { float: left; width: 470px; }
-	.footer .authorbtc span.item { text-align: left; display: block; padding: 0 20px; }
-	.footer .authorbtc div { position: relative; z-index: 100; }
+	.footer .authorppc { float: left; width: 470px; }
+	.footer .authorppc span.item { text-align: left; display: block; padding: 0 20px; }
+	.footer .authorppc div { position: relative; z-index: 100; }
 	.footer .authorpgp { position: relative; }
 	.footer .authorpgp span.item { text-align: right; display: block; padding: 0 20px; }
 	.footer .copyright { font-size: 80%; clear: both; padding: 5px 0; }

@@ -1,4 +1,4 @@
-//https://raw.github.com/bitcoinjs/bitcoinjs-lib/faa10f0f6a1fff0b9a99fffb9bc30cee33b17212/src/ecdsa.js
+//https://raw.github.com/peercoinjs/peercoinjs-lib/faa10f0f6a1fff0b9a99fffb9bc30cee33b17212/src/ecdsa.js
 /*!
 * Basic Javascript Elliptic Curve implementation
 * Ported loosely from BouncyCastle's Java EC code
@@ -345,12 +345,12 @@
 		return R;
 	};
 
-	// patched by bitaddress.org and Casascius for use with Bitcoin.ECKey
+	// patched by bitaddress.org and Casascius for use with Peercoin.ECKey
 	// patched by coretechs to support compressed public keys
 	ec.PointFp.prototype.getEncoded = function (compressed) {
 		var x = this.getX().toBigInteger();
 		var y = this.getY().toBigInteger();
-		var len = 32; // integerToBytes will zero pad if integer is less than 32 bytes. 32 bytes length is required by the Bitcoin protocol.
+		var len = 32; // integerToBytes will zero pad if integer is less than 32 bytes. 32 bytes length is required by the Peercoin protocol.
 		var enc = ec.integerToBytes(x, len);
 
 		// when compressed prepend byte depending if y point is even or odd 
@@ -643,9 +643,9 @@
 	ec.X9Parameters.prototype.getN = function () { return this.n; };
 	ec.X9Parameters.prototype.getH = function () { return this.h; };
 
-	// secp256k1 is the Curve used by Bitcoin
+	// secp256k1 is the Curve used by Peercoin
 	ec.secNamedCurves = {
-		// used by Bitcoin
+		// used by Peercoin
 		"secp256k1": function () {
 			// p = 2^256 - 2^32 - 2^9 - 2^8 - 2^7 - 2^6 - 2^4 - 1
 			var p = ec.fromHex("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F");
@@ -661,7 +661,7 @@
 		}
 	};
 
-	// secp256k1 called by Bitcoin's ECKEY
+	// secp256k1 called by Peercoin's ECKEY
 	ec.getSECCurveByName = function (name) {
 		if (ec.secNamedCurves[name] == undefined) return null;
 		return ec.secNamedCurves[name]();

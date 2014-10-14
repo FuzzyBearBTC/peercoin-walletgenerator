@@ -12,9 +12,9 @@ ninja.wallets.vanitywallet = {
 	},
 
 	generateKeyPair: function () {
-		var key = new Bitcoin.ECKey(false);
+		var key = new Peercoin.ECKey(false);
 		var publicKey = key.getPubKeyHex();
-		var privateKey = key.getBitcoinHexFormat();
+		var privateKey = key.getPeercoinHexFormat();
 		document.getElementById("vanitypubkey").innerHTML = publicKey;
 		document.getElementById("vanityprivatekey").innerHTML = privateKey;
 		document.getElementById("vanityarea").style.display = "block";
@@ -23,7 +23,7 @@ ninja.wallets.vanitywallet = {
 
 	addKeys: function () {
 		var privateKeyWif = ninja.translator.get("vanityinvalidinputcouldnotcombinekeys");
-		var bitcoinAddress = ninja.translator.get("vanityinvalidinputcouldnotcombinekeys");
+		var peercoinAddress = ninja.translator.get("vanityinvalidinputcouldnotcombinekeys");
 		var publicKeyHex = ninja.translator.get("vanityinvalidinputcouldnotcombinekeys");
 		try {
 			var input1KeyString = document.getElementById("vanityinput1").value;
@@ -39,7 +39,7 @@ ninja.wallets.vanitywallet = {
 					}
 					else {
 						privateKeyWif = ninja.translator.get("vanityprivatekeyonlyavailable");
-						bitcoinAddress = ninja.publicKey.getBitcoinAddressFromByteArray(pubKeyByteArray);
+						peercoinAddress = ninja.publicKey.getPeercoinAddressFromByteArray(pubKeyByteArray);
 						publicKeyHex = ninja.publicKey.getHexFromByteArray(pubKeyByteArray);
 					}
 				}
@@ -53,7 +53,7 @@ ninja.wallets.vanitywallet = {
 						) {
 				privateKeyWif = ninja.translator.get("vanityprivatekeyonlyavailable");
 				var pubKeyHex = (ninja.publicKey.isPublicKeyHexFormat(input1KeyString)) ? input1KeyString : input2KeyString;
-				var ecKey = (ninja.privateKey.isPrivateKey(input1KeyString)) ? new Bitcoin.ECKey(input1KeyString) : new Bitcoin.ECKey(input2KeyString);
+				var ecKey = (ninja.privateKey.isPrivateKey(input1KeyString)) ? new Peercoin.ECKey(input1KeyString) : new Peercoin.ECKey(input2KeyString);
 				// add 
 				if (document.getElementById("vanityradioadd").checked) {
 					var pubKeyCombined = ninja.publicKey.getByteArrayFromAdding(pubKeyHex, ecKey.getPubKeyHex());
@@ -65,7 +65,7 @@ ninja.wallets.vanitywallet = {
 				if (pubKeyCombined == null) {
 					alert(ninja.translator.get("vanityalertinvalidinputpublickeysmatch"));
 				} else {
-					bitcoinAddress = ninja.publicKey.getBitcoinAddressFromByteArray(pubKeyCombined);
+					peercoinAddress = ninja.publicKey.getPeercoinAddressFromByteArray(pubKeyCombined);
 					publicKeyHex = ninja.publicKey.getHexFromByteArray(pubKeyCombined);
 				}
 			}
@@ -84,8 +84,8 @@ ninja.wallets.vanitywallet = {
 					alert(ninja.translator.get("vanityalertinvalidinputprivatekeysmatch"));
 				}
 				else {
-					bitcoinAddress = combinedPrivateKey.getBitcoinAddress();
-					privateKeyWif = combinedPrivateKey.getBitcoinWalletImportFormat();
+					peercoinAddress = combinedPrivateKey.getPeercoinAddress();
+					privateKeyWif = combinedPrivateKey.getPeercoinWalletImportFormat();
 					publicKeyHex = combinedPrivateKey.getPubKeyHex();
 				}
 			}
@@ -93,7 +93,7 @@ ninja.wallets.vanitywallet = {
 			alert(e);
 		}
 		document.getElementById("vanityprivatekeywif").innerHTML = privateKeyWif;
-		document.getElementById("vanityaddress").innerHTML = bitcoinAddress;
+		document.getElementById("vanityaddress").innerHTML = peercoinAddress;
 		document.getElementById("vanitypublickeyhex").innerHTML = publicKeyHex;
 		document.getElementById("vanitystep2area").style.display = "block";
 		document.getElementById("vanitystep2icon").setAttribute("class", "less");
