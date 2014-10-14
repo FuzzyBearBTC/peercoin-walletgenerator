@@ -1,0 +1,16 @@
+How To Build wallet.peercointalk.org
+====================================
+
+Dependencies:
+1. NodeJS
+2. NPM
+	
+Process
+	git clone https://github.com/SigmundAlpha/wallet.peercointalk.org.git
+	cd wallet.peercointalk.org
+	npm install grunt grunt-combine
+	grunt
+	
+After running the commands, you should find "wallet.peercointalk.org.html"
+at the root of the directory.  This is the only file you need to host to
+run wallet.peercointalk.org.
