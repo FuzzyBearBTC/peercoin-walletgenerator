@@ -69,5 +69,38 @@ ninja.wallets.bulkwallet = {
 			document.getElementById("bulka" + faqNum).style.display = "block";
 			document.getElementById("bulke" + faqNum).setAttribute("class", "less");
 		}
+	},
+	
+	// dependencies: jsPDF, FileSaver, CSVToArray			
+	exportPDF: function (csv) {
+
+		var doc = new jsPDF();
+		
+		doc.setFontSize(40);
+		
+		doc.text(8, 15, 'Bulk Wallet');
+		
+		doc.setFontSize(13);
+		
+		// convert the raw CSV bulk wallet data to a JavaScript array[]
+		var bulkWalletContainer = CSVToArray(csv);
+		
+		// loop through the bulk wallet addresses and add them to the PDF
+		var i,j;
+		for (i = 0, j = 25; i < bulkWalletContainer.length; i++, j += 15) {
+			
+			// starts a new page when the current page is full
+			// math: (25 += 15) * 18 ~= 295
+			if (j % 295 === 0) {
+				doc.addPage();
+				j = 25;
+			}
+			
+			doc.text(8, j, 'Peercoin Address: ' + bulkWalletContainer[i][1]);
+			doc.text(8, j + 5, 'Private Key: ' + bulkWalletContainer[i][2]);
+		}
+		
+		// generate the PDF and prompt the user to download it
+		doc.save('bulk-wallet.pdf');
 	}
 };

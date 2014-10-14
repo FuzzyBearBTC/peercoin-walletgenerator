@@ -48,7 +48,15 @@
 
 	<title>bitaddress.org</title>
 	<meta charset="utf-8">
-
+	<script type="text/javascript">
+//jsPDF.js	
+	</script>
+	<script type="text/javascript">
+//FileSaver.js
+	</script>
+	<script type="text/javascript">
+//CVStoArray.js
+	</script>
 	<script type="text/javascript">
 //array.map.js
 	</script>
@@ -212,6 +220,7 @@
 						<span><label id="bulklabelrowstogenerate" for="bulklimit">Rows to generate:</label> <input type="text" id="bulklimit" value="3" /></span>
 						<span><label id="bulklabelcompressed" for="bulkcompressed">Compressed addresses?</label> <input type="checkbox" id="bulkcompressed" /></span>
 						<span><input type="button" id="bulkgenerate" value="Generate" onclick="ninja.wallets.bulkwallet.buildCSV(document.getElementById('bulklimit').value * 1, document.getElementById('bulkstartindex').value * 1, document.getElementById('bulkcompressed').checked);" /> </span>
+						<span class="exportpdf"><input name="exportpdf" id="bulkexportpdf" value="Export as PDF" onclick="ninja.wallets.bulkwallet.exportPDF(document.getElementById('bulktextarea').value);" type="button"></span>
 						<span class="print"><input type="button" name="print" id="bulkprint" value="Print" onclick="window.print();" /></span>
 					</div>
 				</div>

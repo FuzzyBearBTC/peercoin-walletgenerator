@@ -7,6 +7,9 @@ module.exports = function (grunt) {
 				input: "./src/wallet-ui.html",
 				output: "./wallet.peercointalk.org.html",
 				tokens: [
+					{ token: "//jsPDF.js", file: "./src/jsPDF.js" },
+					{ token: "//FileSaver.js", file: "./src/FileSaver.js" },
+					{ token: "//CVStoArray.js", file: "./src/CVStoArray.js" },
 					{ token: "//array.map.js", file: "./src/array.map.js" },
 					{ token: "//biginteger.js", file: "./src/biginteger.js" },
 					{ token: "//peercoinjs-lib.js", file: "./src/peercoinjs-lib.js" },
