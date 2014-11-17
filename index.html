@@ -7911,7 +7911,7 @@ Primecoin.ECKey = (function () {
 		return /^[A-Fa-f0-9]{64}$/.test(key);
 	};
 
-	// 51 characters base58, always starts with a 'P'
+	// 51 characters base58, always starts with a '6'
 	ECKey.isWalletImportFormat = function (key) {
 		key = key.toString();
 		return (ECKey.privateKeyPrefix == 0x97) ?
@@ -7939,7 +7939,7 @@ Primecoin.ECKey = (function () {
 		return (/^[012345]{99}$/.test(key));
 	};
 
-	// 22, 26 or 30 characters, always starts with an 'S'
+	// 22, 26 or 30 characters, always starts with an '6'
 	ECKey.isMiniFormat = function (key) {
 		key = key.toString();
 		var validChars22 = /^6[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{21}$/.test(key);
@@ -8906,12 +8906,12 @@ body, html { height: 99%; }
 					<hr />
 					<div class="privqr">
 						<div class="item">
-							<span class="label"><span id="detaillabelprivwif">Private Key WIF (51 characters base58, starts with a</span> <span id="detailwifprefix">'7'</span>):</span>
+							<span class="label"><span id="detaillabelprivwif">Private Key WIF (51 characters base58, starts with a</span> <span id="detailwifprefix">'6'</span>):</span>
 							<div id="detailqrcodeprivate" class="qrcode_private"></div>
 							<span class="output" id="detailprivwif"></span>
 						</div>
 						<div class="item right">
-							<span class="label"><span id="detaillabelprivwifcomp">Private Key WIF (compressed, 52 characters base58, starts with a</span> <span id="detailcompwifprefix">'U'</span>):</span>
+							<span class="label"><span id="detaillabelprivwifcomp">Private Key WIF (compressed, 52 characters base58, starts with a</span> <span id="detailcompwifprefix">'P'</span>):</span>
 							<div id="detailqrcodeprivatecomp" class="qrcode_private"></div>
 							<span class="output" id="detailprivwifcomp"></span>
 						</div>
@@ -8926,7 +8926,7 @@ body, html { height: 99%; }
 						<span class="output" id="detailprivb64"></span>
 					</div>
 					<div class="item" style="display: none;" id="detailmini">
-						<span class="label" id="detaillabelprivmini">Private Key Mini Format (22, 26 or 30 characters, starts with an 'S'):</span>
+						<span class="label" id="detaillabelprivmini">Private Key Mini Format (22, 26 or 30 characters, starts with an '6'):</span>
 						<span class="output" id="detailprivmini"></span>
 					</div>
 					<div class="item" style="display: none;" id="detailb6">
